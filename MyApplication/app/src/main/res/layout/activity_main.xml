@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Inside ScrollView, there should be only one child -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header Title -->
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="সাদাত ডিস্ট্রিবিউশন"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- DatePicker -->
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:spinnersShown="true" />
+
+        <!-- Input Boxes -->
+        <EditText
+            android:id="@+id/amount1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="পূর্বের বাঁকি"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/amountbill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="আজকের বিল"
+            android:inputType="numberDecimal"
+             />
+        <EditText
+            android:id="@+id/amount2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="আজকের বাঁকি"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/amount3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="সকালের জমা"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/amount4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="বিক্রয় জমা"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/amount5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="বর্তমান মোট বাঁকি"
+            android:inputType="numberDecimal" />
+
+        <!-- Button -->
+        <Button
+            android:id="@+id/btnSmsPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SMS Preview"
+            android:layout_marginTop="16dp" />
+
+        <!-- Multiline EditText -->
+
+        <EditText
+            android:id="@+id/multilineEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="top|start"
+            android:hint="এখানে আপনার নোট লিখুন..."
+            android:inputType="textMultiLine"
+            android:minLines="4" />
+
+        <TextView
+            android:id="@+id/selectedContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="কোনো কন্টাক্ট নির্বাচন করা হয়নি"
+            android:textSize="18sp"
+            android:textColor="#FF5722"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+        <Button
+            android:id="@+id/btnSmsSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send SMS"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="40dp"/>
+    </LinearLayout>
+
+</ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="80dp"
+    android:contentDescription="Select Contact"
+    app:srcCompat="@android:drawable/ic_menu_call" />
+
+</RelativeLayout>
