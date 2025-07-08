@@ -106,7 +106,15 @@
             android:textSize="18sp"
             android:textColor="#FF5722"
             android:gravity="center"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="5dp" />
+        <TextView
+            android:id="@+id/selectedPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF5722"
+            android:visibility="invisible"
+             />
         <Button
             android:id="@+id/btnSmsSend"
             android:layout_width="match_parent"

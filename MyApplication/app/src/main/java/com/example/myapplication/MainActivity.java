@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
     private static final int PERMISSION_REQUEST_SEND_SMS = 123;
     private TextView selectedContact;
+    private TextView selectedPhoneNumber;
     EditText multilineEditText;
     Button btnSmsSend;
 
@@ -102,9 +103,13 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_CONTACT);
     }
 
+    private void createSMS(){
+        
+
+    }
     private void sendSmsMessage() {
         String message = multilineEditText.getText().toString().trim();
-        String phoneNumber = selectedContact.getText().toString().trim();
+        String phoneNumber = selectedPhoneNumber.getText().toString().trim();
 
         if (message.isEmpty()) {
             Toast.makeText(this, "SMS বার্তা ফাঁকা!", Toast.LENGTH_SHORT).show();
@@ -140,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+           selectedPhoneNumber = findViewById(R.id.selectedPhoneNumber);
         if (requestCode == PICK_CONTACT && resultCode == Activity.RESULT_OK && data != null) {
             Uri contactUri = data.getData();
             if (contactUri != null) {
@@ -178,14 +183,17 @@ public class MainActivity extends AppCompatActivity {
 
                         if (phonesCursor != null) {
                             contactInfo.append("মোবাইল: ");
-                            while (phonesCursor.moveToNext()) {
+                            if (phonesCursor.moveToFirst()) {
                                 @SuppressLint("Range") String phoneNumber = phonesCursor.getString(
                                         phonesCursor.getColumnIndex(
                                                 ContactsContract.CommonDataKinds.Phone.NUMBER));
-                                contactInfo.append(phoneNumber).append(" ");
+                                contactInfo.append(phoneNumber);
+
+                                selectedPhoneNumber.setText(phoneNumber);
                             }
                             phonesCursor.close();
                         }
+
                     } else {
                         contactInfo.append("মোবাইল নম্বর নেই");
                     }
