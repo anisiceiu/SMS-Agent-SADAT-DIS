@@ -222,6 +222,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendSmsMessage() {
+        multilineEditText = findViewById(R.id.multilineEditText);
+        selectedPhoneNumber = findViewById(R.id.selectedPhoneNumber);
+        
         String message = multilineEditText.getText().toString().trim();
         String phoneNumber = selectedPhoneNumber.getText().toString().trim();
 
