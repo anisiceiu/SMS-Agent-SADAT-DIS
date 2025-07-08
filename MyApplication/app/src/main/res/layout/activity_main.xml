@@ -5,127 +5,201 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- Inside ScrollView, there should be only one child -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <!-- Header Title -->
-        <TextView
-            android:id="@+id/headerTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="সাদাত ডিস্ট্রিবিউশন"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="16dp" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- DatePicker -->
-        <DatePicker
-            android:id="@+id/datePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:calendarViewShown="false"
-            android:spinnersShown="true" />
+            <!-- Header Title -->
+            <TextView
+                android:id="@+id/headerTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="সাদাত ডিস্ট্রিবিউশন"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
 
-        <!-- Input Boxes -->
-        <EditText
-            android:id="@+id/amount1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="পূর্বের বাঁকি"
-            android:inputType="numberDecimal"
-            android:layout_marginTop="16dp" />
-        <EditText
-            android:id="@+id/amountbill"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="আজকের বিল"
-            android:inputType="numberDecimal"
-             />
-        <EditText
-            android:id="@+id/amount2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="আজকের বাঁকি"
-            android:inputType="numberDecimal" />
+            <!-- DatePicker -->
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:calendarViewShown="false"
+                android:spinnersShown="true" />
 
-        <EditText
-            android:id="@+id/amount3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="সকালের জমা"
-            android:inputType="numberDecimal" />
+            <!-- Input: Label + Box rows -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
 
-        <EditText
-            android:id="@+id/amount4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="বিক্রয় জমা"
-            android:inputType="numberDecimal" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="পূর্বের বাঁকি:" />
 
-        <EditText
-            android:id="@+id/amount5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="বর্তমান মোট বাঁকি"
-            android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/amount1"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
 
-        <!-- Button -->
-        <Button
-            android:id="@+id/btnSmsPreview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SMS Preview"
-            android:layout_marginTop="16dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <!-- Multiline EditText -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="আজকের বিল:" />
 
-        <EditText
-            android:id="@+id/multilineEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="top|start"
-            android:hint="এখানে আপনার নোট লিখুন..."
-            android:inputType="textMultiLine"
-            android:minLines="4" />
+                <EditText
+                    android:id="@+id/amountbill"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/selectedContact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="কোনো কন্টাক্ট নির্বাচন করা হয়নি"
-            android:textSize="18sp"
-            android:textColor="#FF5722"
-            android:gravity="center"
-            android:layout_marginBottom="5dp" />
-        <TextView
-            android:id="@+id/selectedPhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="#FF5722"
-            android:visibility="invisible"
-             />
-        <Button
-            android:id="@+id/btnSmsSend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Send SMS"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="40dp"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-</ScrollView>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="আজকের বাঁকি:" />
 
+                <EditText
+                    android:id="@+id/amount2"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="সকালের জমা:" />
+
+                <EditText
+                    android:id="@+id/amount3"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="বিক্রয় জমা:" />
+
+                <EditText
+                    android:id="@+id/amount4"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="বর্তমান মোট বাঁকি:" />
+
+                <EditText
+                    android:id="@+id/amount5"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <!-- Button -->
+            <Button
+                android:id="@+id/btnSmsPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SMS Preview"
+                android:layout_marginTop="16dp" />
+
+            <!-- Multiline EditText -->
+            <EditText
+                android:id="@+id/multilineEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="top|start"
+                android:hint="এখানে আপনার নোট লিখুন..."
+                android:inputType="textMultiLine"
+                android:minLines="4" />
+
+            <!-- Contact Info -->
+            <TextView
+                android:id="@+id/selectedContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="কোনো কন্টাক্ট নির্বাচন করা হয়নি"
+                android:textSize="18sp"
+                android:textColor="#FF5722"
+                android:gravity="center"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:id="@+id/selectedPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#FF5722"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btnSmsSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send SMS"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="40dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -134,7 +208,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="80dp"
-    android:contentDescription="Select Contact"
-    app:srcCompat="@android:drawable/ic_menu_call" />
+        android:contentDescription="Select Contact"
+        app:srcCompat="@android:drawable/ic_menu_call" />
 
 </RelativeLayout>
