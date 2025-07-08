@@ -8,8 +8,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -42,8 +44,23 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+
         multilineEditText = findViewById(R.id.multilineEditText);
         btnSmsSend = findViewById(R.id.btnSmsSend);
+        Button btnSmsPreview = findViewById(R.id.btnSmsPreview);
+
+        btnSmsPreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 👉 Put your SMS preview logic here!
+                // Example: Show a Toast for now
+                //Toast.makeText(MainActivity.this, "SMS Preview Clicked!", Toast.LENGTH_SHORT).show();
+
+                // Example: Maybe call your createSMS() method here
+                createSMS();
+            }
+        });
+
 
         btnSmsSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,10 +120,107 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_CONTACT);
     }
 
-    private void createSMS(){
+    private void createSMS() {
+        float purberBaki = 0;
+        float ajkerBill = 0;
+        float ajkerBaki = 0;
+        float sokalerJoma = 0;
+        float bikroyJoma=0;
+        float total=0;
+        float bortomanMotBaki=0;
 
+        EditText amountPurberBaki = findViewById(R.id.amountPurberBaki); // or R.id.amountPurberBaki if you renamed it
+        String inputText1 = amountPurberBaki.getText().toString().trim();
+        if (!inputText1.isEmpty()) {
+            try {
+                purberBaki = Float.parseFloat(inputText1);
+            } catch (NumberFormatException e) {
+                purberBaki = 0; // fallback if not a valid float
+            }
+        }
 
+        EditText amountAjkerBill = findViewById(R.id.amountAjkerBill);
+        String inputText2 = amountAjkerBill.getText().toString().trim();
+        if (!inputText2.isEmpty()) {
+            try {
+                ajkerBill = Float.parseFloat(inputText2);
+            } catch (NumberFormatException e) {
+                ajkerBill = 0;
+            }
+        }
+
+        EditText amountAjkerBaki = findViewById(R.id.amountAjkerBaki); // or R.id.amountAjkerBaki if you renamed it
+        String inputText3 = amountAjkerBaki.getText().toString().trim();
+        if (!inputText3.isEmpty()) {
+            try {
+                ajkerBaki = Float.parseFloat(inputText3);
+            } catch (NumberFormatException e) {
+                ajkerBaki = 0;
+            }
+        }
+
+        //
+
+        EditText amountSokalerJoma = findViewById(R.id.amountSokalerJoma); // or R.id.amountAjkerBaki if you renamed it
+        String inputText4 = amountSokalerJoma.getText().toString().trim();
+        if (!inputText4.isEmpty()) {
+            try {
+                sokalerJoma = Float.parseFloat(inputText4);
+            } catch (NumberFormatException e) {
+                sokalerJoma = 0;
+            }
+        }
+
+        EditText amountBikroyJoma = findViewById(R.id.amountBikroyJoma); // or R.id.amountAjkerBaki if you renamed it
+        String inputText5 = amountBikroyJoma.getText().toString().trim();
+        if (!inputText5.isEmpty()) {
+            try {
+                bikroyJoma = Float.parseFloat(inputText5);
+            } catch (NumberFormatException e) {
+                bikroyJoma = 0;
+            }
+        }
+
+        //
+        EditText amountBortomanMotBaki = findViewById(R.id.amountBortomanMotBaki); // or R.id.amountAjkerBaki if you renamed it
+        String inputText6 = amountBortomanMotBaki.getText().toString().trim();
+        if (!inputText6.isEmpty()) {
+            try {
+                bortomanMotBaki = Float.parseFloat(inputText6);
+            } catch (NumberFormatException e) {
+                bortomanMotBaki = 0;
+            }
+        }
+
+        ajkerBaki = ajkerBill - bikroyJoma;
+        total = purberBaki + ajkerBaki;
+        bortomanMotBaki = total - sokalerJoma;
+
+        amountAjkerBaki.setText(String.valueOf(ajkerBaki));
+        amountBortomanMotBaki.setText(String.valueOf(bortomanMotBaki));
+
+        DatePicker datePicker = findViewById(R.id.datePicker);
+        String tarikh = "";
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();  // Note: Month is 0-based (January = 0)
+        int year = datePicker.getYear();
+        tarikh =day + "/" + (month + 1) + "/" + year;
+
+        // Now you can use purberBaki, ajkerBill, ajkerBaki to build your SMS string
+        String smsText = "সাদাত ডিস্ট্রিবিউশন\nতারিখঃ"+tarikh
+                +"\nপূর্বের বাঁকি: " + purberBaki +
+                "\nআজকের বিল: " + ajkerBill +
+                "\nআজকের বাঁকি: " + ajkerBaki+
+                "\nসকালের জমা: " + sokalerJoma+
+                "\nবিক্রয় জমা: " + bikroyJoma+
+                "\nমোট: " + total+
+                "\nবর্তমান মোট বাঁকি: " + bortomanMotBaki;
+
+        // Example: Show in log or TextView
+        multilineEditText = findViewById(R.id.multilineEditText);
+        multilineEditText.setText(smsText);
     }
+
     private void sendSmsMessage() {
         String message = multilineEditText.getText().toString().trim();
         String phoneNumber = selectedPhoneNumber.getText().toString().trim();
@@ -133,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
                 smsManager.sendTextMessage(phoneNumber, null, message, null, null);
             }
 
-            Toast.makeText(this, "দীর্ঘ SMS পাঠানো হয়েছে!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "SMS পাঠানো হয়েছে!", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             Toast.makeText(this, "SMS পাঠাতে সমস্যা: " + e.getMessage(), Toast.LENGTH_LONG).show();

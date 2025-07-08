@@ -48,7 +48,7 @@
                     android:text="পূর্বের বাঁকি:" />
 
                 <EditText
-                    android:id="@+id/amount1"
+                    android:id="@+id/amountPurberBaki"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                     android:text="আজকের বিল:" />
 
                 <EditText
-                    android:id="@+id/amountbill"
+                    android:id="@+id/amountAjkerBill"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -86,10 +86,13 @@
                     android:text="আজকের বাঁকি:" />
 
                 <EditText
-                    android:id="@+id/amount2"
+                    android:id="@+id/amountAjkerBaki"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:cursorVisible="false"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
@@ -105,7 +108,7 @@
                     android:text="সকালের জমা:" />
 
                 <EditText
-                    android:id="@+id/amount3"
+                    android:id="@+id/amountSokalerJoma"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -124,7 +127,7 @@
                     android:text="বিক্রয় জমা:" />
 
                 <EditText
-                    android:id="@+id/amount4"
+                    android:id="@+id/amountBikroyJoma"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -143,9 +146,12 @@
                     android:text="বর্তমান মোট বাঁকি:" />
 
                 <EditText
-                    android:id="@+id/amount5"
+                    android:id="@+id/amountBortomanMotBaki"
                     android:layout_width="0dp"
                     android:layout_weight="2"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:cursorVisible="false"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal" />
             </LinearLayout>
